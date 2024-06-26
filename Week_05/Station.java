@@ -46,5 +46,10 @@ public class Station {
     public Station getNext() {
         return this.next;
     } // method getNext()
+
+    //accesor for name 
+    public String getName() {
+        return this.name;
+    }
     
 } // class Station

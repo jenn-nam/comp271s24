@@ -44,4 +44,33 @@ public class TrainLine {
             currentStation.setNext(newStation);
         }
     } // method addStation
+
+/**
+ * Contains method will accept a given name 
+ * Intinalize a boolean var, inLine, to keep track of station names.
+ * Start iterating at the beginning (head).
+ * While current Station is not null/not at the end of train line AND inLine is false, 
+ * will then check if name at current iteration is equal to the given Station name, 
+ * then inline will become true, then return inline. 
+ * 
+ *  */
+    public boolean contains(String givenStationName){
+        //initialize boolean to keep track of wether or not a name matches
+        boolean inLine = false; 
+
+        //will begin iterating at the head (start of Train Line)
+        Station currentStation = this.head; 
+        
+        //a while loop that check wether or not a given name is in train line 
+        while (currentStation != null && !inLine){
+            if(currentStation.getName().equals(givenStationName)){
+                //if there is a match, then inLine becomes true 
+                inLine = true; 
+            }
+            //moves to next station to be compared 
+            currentStation = currentStation.getNext();
+        }
+        //returns inLine 
+        return inLine; 
+    }
 }
