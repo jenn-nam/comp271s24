@@ -1,0 +1,4 @@
+In station class, add a toString method which returns name of station. 
+In TrainLine class, add the toString method we can take a similar approach by checking if the head is null. 
+Then we can return a string indicating that the “Tain line is empty” if true. 
+We can then use a string builder to display our information about the train line as we transverse through the line from the head station and append the names of the stations. 
