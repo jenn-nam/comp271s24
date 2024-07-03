@@ -68,15 +68,23 @@ public class TrainLine {
      * @param stationName String with station name to search for
      * @return true if station found; false otherwise or if object has no stations.
      */
-    public boolean contains(String stationName) {
-        boolean found = false;
-        Station current = this.head;
-        while (!found && current != null) {
-            found = current.getName().equals(name);
-            current = current.getNext();
-        }
-        return found;
-    } // method contains
+    //public boolean contains(String stationName) {
+        //boolean found = false;
+        //Station current = this.head;
+       // while (!found && current != null) {
+           // found = current.getName().equals(name);
+           // current = current.getNext();
+        //}
+        //return found;
+    // } // method contains
+
+    //use indexOf to check if a station is in the TrainLine as contains essentially
+    //asks for the same thing.
+    public boolean contains(String stationName){
+        //will return true or false depending on if indexOf finds the station name or not
+        return indexOf(stationName) != -1; 
+        
+    }
 
     /**
      * Inserts a new station after an existing one.
@@ -140,6 +148,24 @@ public class TrainLine {
 
     /** STUB FOR indexOf */
     public int indexOf(String name) {
+        //creating a counter to keep track of index
+        int stationIndex = 0; 
+        //will start traversing at the head 
+        Sation currentIndex = this.head; 
+        //traversing begins 
+        while (currentIndex != null){
+            //checks if the currect index in the traversal matches given station name
+            if (currentIndex.getName().equals(name)){
+                //if the name does match, then return the index
+                return stationIndex; 
+            }
+            //if, not then the next station is examined
+            currentIndex = currentIndex.getNext();
+            //the counter is incremented 
+            stationIndex++; 
+        }
+        //if no station was found, then return -1
         return -1;
     } // method indexOf
+
 }
