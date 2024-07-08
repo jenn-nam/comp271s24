@@ -151,7 +151,7 @@ public class TrainLine {
         //creating a counter to keep track of index
         int stationIndex = 0; 
         //will start traversing at the head 
-        Sation currentIndex = this.head; 
+        Station currentIndex = this.head; 
         //traversing begins 
         while (currentIndex != null){
             //checks if the currect index in the traversal matches given station name
