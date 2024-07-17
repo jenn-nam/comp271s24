@@ -10,7 +10,12 @@ public class SimpleLinkedList implements Stack271<String>, Queue271<String> {
     /** The last node of the linked list */
     private Node tail;
 
+    private String result = ""; 
     /**Initialize empty array */
+    public SimpleLinkedList() {
+        this.head = null; 
+        this.tail = null; 
+    }
 
     /**
      * A node will be added at the beginning with this method 
@@ -87,7 +92,7 @@ public class SimpleLinkedList implements Stack271<String>, Queue271<String> {
         
     }
     //to see is LL is empty 
-    public boolaen isEmpty() {
+    public boolean isEmpty() {
         return head == null; 
     }
     //retrieves result
