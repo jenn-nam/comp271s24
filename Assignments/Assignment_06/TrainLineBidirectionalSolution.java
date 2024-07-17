@@ -1,4 +1,4 @@
-public class TrainLine {
+public class TrainLineBidirectionalSolution {
 
     /** Points to first station in the train line */
     private Station head;
@@ -12,11 +12,24 @@ public class TrainLine {
     /** Current number of stations in this object */
     private int numberOfStations;
 
-    /** Default constructor - redundant but good to show intent */
-    public TrainLine() {
+    /**
+     * Determines if this is uni- or bi-directional line. The default preference is
+     * for uni-directional lines.
+     */
+    private boolean biDirectional;
+    private static final boolean BIDIRECTIONAL = false;
+
+    /** Basic constructor allows choice of directionality */
+    public TrainLineBidirectionalSolution(boolean biDirectional) {
         this.head = null;
         this.tail = null;
         this.numberOfStations = 0;
+        this.biDirectional = biDirectional;
+    } // basic constructor
+
+    /** Default constructor */
+    public TrainLineBidirectionalSolution() {
+        this(BIDIRECTIONAL);
     } // default constructor
 
     /** Accessor for number of stations present in this trainline */
@@ -63,12 +76,11 @@ public class TrainLine {
         } else {
             // The trainline has an existing head station. Therefore,
             // it also has a known last station (this.tail).
+            if (this.biDirectional) {
+                // If object is bi-directional, connect prev to tail
+                station.setPrev(this.tail);
+            }
             this.tail.setNext(station); // add new station after tail station
-           /**
-            * updated line 
-            */
-            //link new station prev pointer to current tail of train line 
-            station.setPrev(this.tail); 
             this.tail = station; // Designate newly added station as tail station
         }
         // Update station counter
@@ -170,8 +182,8 @@ public class TrainLine {
     } // method indexOf
 
     /**
-     * Determines if a station with a specific name is present in this TrainLine. 
-     * Method contains is essentially a wrapper method for indexOf. If a station 
+     * Determines if a station with a specific name is present in this TrainLine.
+     * Method contains is essentially a wrapper method for indexOf. If a station
      * is present in this trainline its indexOf will be > -1. Therefore, any
      * indexOf value > -1 indicates that the named station is contained in the
      * trainline.
@@ -184,9 +196,9 @@ public class TrainLine {
     } // method contains
 
     /**
-     * Accessor for this.head 
+     * Accessor for this.head
      * This accessor is necessary so that we can tell if other similar objects
-     * have a null head or not. 
+     * have a null head or not.
      * 
      * @return Station this.head
      */
@@ -195,7 +207,7 @@ public class TrainLine {
     } // method getHead
 
     /**
-     * Accessor for this.tail 
+     * Accessor for this.tail
      * 
      * @return Station this.tail
      */
@@ -205,9 +217,10 @@ public class TrainLine {
 
     /**
      * Appends a trainline to the current trainline object
+     * 
      * @param other Trainline to append to present object
      */
-    public void append(TrainLine other) {
+    public void append(TrainLineBidirectionalSolution other) {
         // First make sure that the trainline we wish to append is not null or empty
         if (other != null && other.getHead() != null) {
             // OK, we have something to append, now how to append it?
@@ -215,7 +228,7 @@ public class TrainLine {
                 // If this trainline is empty, we use the other trainline's head and tail
                 this.head = other.getHead();
             } else {
-                // otherwise, we point this.tail to other.head ae 
+                // otherwise, we point this.tail to other.head ae
                 this.tail.setNext(other.getHead());
             }
             // Either way it's the same tail
