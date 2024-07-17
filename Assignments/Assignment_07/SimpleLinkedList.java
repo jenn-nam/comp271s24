@@ -42,7 +42,7 @@ public class SimpleLinkedList implements Stack271<String>, Queue271<String> {
      * removes element from front of LL 
      */
 
-    public void pull() {
+    public String pull() {
         result = "";
         if (head != null) {
             // data from head node 
@@ -77,7 +77,7 @@ public class SimpleLinkedList implements Stack271<String>, Queue271<String> {
      * node will be removed at the beg. of list 
      */
 
-    public void remove () {
+    public String remove () {
         result = " ";
         //data from head node 
         if (head != null) {
