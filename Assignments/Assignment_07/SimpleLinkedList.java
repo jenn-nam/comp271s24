@@ -54,7 +54,7 @@ public class SimpleLinkedList implements Stack271<String>, Queue271<String> {
     /**
      * adds node to end of list
      */
-    publis boolean add (String data) {
+    public boolean add (String data) {
         //new node with given information 
         Node createdNode = new Node(data);
         //if list is empty, head and trail = created node 
