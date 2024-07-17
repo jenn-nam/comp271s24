@@ -54,6 +54,7 @@ public class SimpleLinkedList implements Stack271<String>, Queue271<String> {
                 tail = null; 
             }
         }
+        return result;
     }
 
     /**
@@ -89,7 +90,7 @@ public class SimpleLinkedList implements Stack271<String>, Queue271<String> {
                 tail = null; 
             }
         }
-        
+        return result; 
     }
     //to see is LL is empty 
     public boolean isEmpty() {
