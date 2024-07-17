@@ -10,7 +10,6 @@ public class SimpleLinkedList implements Stack271<String>, Queue271<String> {
     /** The last node of the linked list */
     private Node tail;
 
-    private String result = ""; 
     /**Initialize empty array */
     public SimpleLinkedList() {
         this.head = null; 
@@ -48,7 +47,7 @@ public class SimpleLinkedList implements Stack271<String>, Queue271<String> {
         }
 
             // data from head node 
-            result = head.toString();
+            String result = head.toString();
             //pointer of hed will point to next node 
             head = head.getNext();
             //tail set to null if list is empty 
@@ -84,9 +83,9 @@ public class SimpleLinkedList implements Stack271<String>, Queue271<String> {
         if (head == null) {
             return null; 
         }
-        String result = head.toString();
+            String result = head.toString();
             //head pointer --> next node
-            head = head.getNext();
+         head = head.getNext();
               //tail = null if list empty 
             if (head ==null) {
                 tail = null; 
