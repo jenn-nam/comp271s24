@@ -102,8 +102,8 @@ public class SimpleLinkedList implements Stack271<String>, Queue271<String> {
 
     public static void main(String[] args) {
 
-        SimpleLinkedListSolution demoQueue = new SimpleLinkedListSolution();
-        SimpleLinkedListSolution demoStack = new SimpleLinkedListSolution();
+        SimpleLinkedList demoQueue = new SimpleLinkedList();
+        SimpleLinkedList demoStack = new SimpleLinkedList();
 
         demoQueue.add("A");
         demoQueue.add("B");
