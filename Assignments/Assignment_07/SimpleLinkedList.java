@@ -43,8 +43,10 @@ public class SimpleLinkedList implements Stack271<String>, Queue271<String> {
      */
 
     public String pull() {
-        result = "";
-        if (head != null) {
+        if (head == null) {
+            return null; 
+        }
+
             // data from head node 
             result = head.toString();
             //pointer of hed will point to next node 
@@ -53,7 +55,6 @@ public class SimpleLinkedList implements Stack271<String>, Queue271<String> {
             if(head == null) {
                 tail = null; 
             }
-        }
         return result;
     }
 
@@ -79,26 +80,22 @@ public class SimpleLinkedList implements Stack271<String>, Queue271<String> {
      */
 
     public String remove () {
-        result = " ";
         //data from head node 
-        if (head != null) {
+        if (head == null) {
+            return null; 
+        }
+        String result = head.toString();
             //head pointer --> next node
-            //tail = null if list empty 
-            result = head.toString();
             head = head.getNext();
+              //tail = null if list empty 
             if (head ==null) {
                 tail = null; 
             }
-        }
         return result; 
     }
     //to see is LL is empty 
     public boolean isEmpty() {
         return head == null; 
-    }
-    //retrieves result
-    public String getResult() {
-        return result; 
     }
 
     public static void main(String[] args) {
