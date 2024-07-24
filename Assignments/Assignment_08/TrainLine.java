@@ -291,5 +291,10 @@ public class TrainLine {
      * if both havve the same nunmber of stations then zero 
      * if this has more stations than other then pos int.
      */
-    
+    public int compareTo(TrainLine other) {
+        int evaluating = this.numberOfStations - other.numberOfStations; 
+        //returning int based on criteria noted in my javadoc 
+        return (evaluating < 0) ? -1 : (evaluating > 0) ? 1 : 0; 
+        }
+    }
 } // class TrainLine
