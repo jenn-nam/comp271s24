@@ -217,5 +217,79 @@ public class TrainLine {
             this.tail = other.getTail();
         }
     } // method append
+    /**
+     * this method will list all the stations within a trainline. Each in a new line. If the trainline is empty,
+     * then a message of "The line is empty" will print. 
+     */
+    public String listStations() {
+        //then check if train list empty
+        if (this.head == null) {
+            return "The line is empty"; 
+        }
+        //using string builder to then be able to return stringResult
+        StringBuilder stringResult = new StringBuilder();
+        //To traverse, begin at head 
+        Station trainLineCurrent = this.head;
+        //go through train line (traversing) 
+        while (trainLineCurrent != null) {
+            stringResult.append(trainLineCurrent.getName()).append("\n");
+            //moving trough trainline 
+            trainLineCurrent = trainLineCurrent.getNext();
+        }
+        return stringResult.toString();
 
+    }
+
+    /**
+     * checks if two trainlines intersect by names. 
+     * If two trainlines have at least one station in common then true, if not, then false. 
+     */
+    public boolean intersects (TrainLine other) {
+        //set a boolean variable to track if true or false
+        boolean intersecting = false; 
+
+        //checking if either one is  empty 
+        if (this.head == null || other.getHead() == null) {
+            intersecting = false; 
+
+        } else if (this == other) {//checking the trainline itself, so it is intersecting
+            intersecting = true; 
+        } else { //go through the stations in current Train. Begin at head. 
+            Station currentTrain = this.head;
+            //then compare the stations from current train to other train 
+            while (currentTrain != null && !intersecting) {
+                Station otherTrainTracking = other.getHead();
+                while (otherTrainTracking !=null && !intersecting) {
+                    //seeing if stations names are the same 
+                    if (currentTrain.getName().equals(otherTrainTracking.getName())) {
+                        //true if names match 
+                        intersecting = true; 
+                    }
+                    //go to the next station for the other train line
+                    otherTrainTracking = otherTrainTracking.getNext();
+                }
+                //go to the next station for the current train 
+                currentTrain = currentTrain.getNext();
+            }
+        }
+        //after traversing and comparing all stations, depending on the flag intersecting, final result 
+        //will be true or false
+        boolean atEnd = false; 
+        //if there was an intersection, then true 
+        if (intersecting) {
+            atEnd = true;
+        } else {
+            atEnd = false; 
+        }
+        return atEnd; 
+
+
+    }
+    /**
+     * the current train line will be compared to the other trainline based on the number of stations each one has. 
+     * if current station has less stations than the other then a neg int will return 
+     * if both havve the same nunmber of stations then zero 
+     * if this has more stations than other then pos int.
+     */
+    
 } // class TrainLine
