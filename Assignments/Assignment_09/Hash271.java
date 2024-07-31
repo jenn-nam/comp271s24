@@ -75,7 +75,7 @@ public class Hash271 {
             }
             // Put the new node to the array position
             this.foundation[destination] = node;
-            
+
             nodeNumber ++; 
         }
     } // method put
@@ -114,19 +114,33 @@ public class Hash271 {
      */
     private void rehash() {
         //keep old array, then make a bigger array
+        Node [] prevFoundation = this.foundation;
         //double array 
-        //node count initialized at 0 
+        this.foundation = new Node[prevFoundation.length * 2];
+        this.nodeNumber = 0; //node count initialized at 0 
 
         //iterate through old array
             //initialize a counter for iteration
+        int index = 0; 
             //while loop for iteration 
-            //traverse old array 
+        while (index < prevFoundation.length) {
+            Node atNode = prevFoundation[index];
+        
+         //then traverse LL at whichever index at                   
+            while (atNode != null) {
+                 //nodes saved while traversing
+                Node nodeNext = atNode.getNext();
 
-                //then traverse LL at whichever index at 
-                    //nodes saved
-                    //sperate whichever node is being traversed 
-                    //take the node and put it back into new array (foundation)
-                    //move to next node 
+                //sperate whichever node is being traversed 
+                atNode.setNext(null);
+                
+                //take the node and put it back into new array (foundation)
+                this.put(atNode);
+                //move to next node 
+                atNode = nodeNext;
+            }
+            index++; 
+        }                           
     }
     /** Driver code */
     public static void main(String[] args) {
