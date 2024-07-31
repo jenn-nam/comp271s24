@@ -16,6 +16,26 @@ public class Hash271 {
         this(DEFAULT_SIZE);
     } // default constructor
 
+    /** Default for load factor */
+    private static final int double DEFAULT_THRESHOLD = 0.75; 
+
+    /** Number of nodes */
+    private int nodeNumber; //tracking number of nodes 
+
+    /** Threshhold for load factor */
+    private double threshold; //based on this treshold, resizing will happen 
+
+    /** Constructor for node size AND threshold */
+    public Hash271(int size, double threshold) {
+        this.foundation = new Node[size];
+    
+        //node counting will start at 0 
+        this.threshold = 0; 
+
+        //threshold will be set
+        this.nodeNumber = threshold; 
+    }
+
     /**
      * Map an integer number to one of the positions of the underlying array. This
      * will come handy we need to find the place to chain a node.
@@ -25,7 +45,9 @@ public class Hash271 {
      *         the length of the array
      */
     private int computeArrayPosition(int value) {
-        return value % this.foundation.length;
+
+         //adds length of array for positive index, then takes modulus 
+        return (value % this.foundation.length + this.foundation.length) % this.foundation.length;
     } // method computeArrayPosition
 
     /**
@@ -36,6 +58,13 @@ public class Hash271 {
     public void put(Node node) {
         // Operate only is node is not null
         if (node != null) {
+            //divide number of nodes by length of array (checking load factor). If load factor is > threshold, then resize. 
+
+            if ((double) nodeNumber / foundation.length > threshold) {
+                rehash();//calling rehash method to resize
+            }
+            //node count will have to increase (++)
+
             // Use the node's hashcode to determine is position in
             // the underlying array
             int destination = computeArrayPosition(node.hashCode());
@@ -46,6 +75,8 @@ public class Hash271 {
             }
             // Put the new node to the array position
             this.foundation[destination] = node;
+            
+            nodeNumber ++; 
         }
     } // method put
 
@@ -78,6 +109,25 @@ public class Hash271 {
         return sb.toString();
     } // method toString
 
+    /**
+     * method doubles array and then puts nodes back 
+     */
+    private void rehash() {
+        //keep old array, then make a bigger array
+        //double array 
+        //node count initialized at 0 
+
+        //iterate through old array
+            //initialize a counter for iteration
+            //while loop for iteration 
+            //traverse old array 
+
+                //then traverse LL at whichever index at 
+                    //nodes saved
+                    //sperate whichever node is being traversed 
+                    //take the node and put it back into new array (foundation)
+                    //move to next node 
+    }
     /** Driver code */
     public static void main(String[] args) {
         Hash271 h = new Hash271();
