@@ -124,7 +124,6 @@ public class Hash271 {
             //while loop for iteration 
         while (index < prevFoundation.length) {
             Node node = prevFoundation[index];
-        
          //then traverse LL at whichever index at                   
             while (node != null) {
                  //nodes saved while traversing
