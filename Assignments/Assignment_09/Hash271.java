@@ -30,10 +30,10 @@ public class Hash271 {
         this.foundation = new Node[size];
     
         //node counting will start at 0 
-        this.threshold = 0; 
+        this.threshold = threshold; 
 
         //threshold will be set
-        this.nodeNumber = threshold; 
+        this.nodeNumber = 0; 
     }
 
     /**
@@ -59,8 +59,7 @@ public class Hash271 {
         // Operate only is node is not null
         if (node != null) {
             //divide number of nodes by length of array (checking load factor). If load factor is > threshold, then resize. 
-
-            if ((double) nodeNumber / foundation.length > threshold) {
+            if (nodeNumber / foundation.length > threshold) {
                 rehash();//calling rehash method to resize
             }
             //node count will have to increase (++)
