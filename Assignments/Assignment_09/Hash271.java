@@ -20,7 +20,7 @@ public class Hash271 {
     private static final double DEFAULT_THRESHOLD = 0.75; 
 
     /** Number of nodes */
-    private int nodeNumber; //tracking number of nodes 
+    private double nodeNumber; //tracking number of nodes 
 
     /** Threshhold for load factor */
     private double threshold; //based on this treshold, resizing will happen 
@@ -124,20 +124,19 @@ public class Hash271 {
         int index = 0; 
             //while loop for iteration 
         while (index < prevFoundation.length) {
-            Node atNode = prevFoundation[index];
+            Node node = prevFoundation[index];
         
          //then traverse LL at whichever index at                   
-            while (atNode != null) {
+            while (node != null) {
                  //nodes saved while traversing
-                Node nodeNext = atNode.getNext();
-
+                Node nextNode = node.getNext();
+                int indexNew = computeArrayPosition(node.hashCode());
                 //sperate whichever node is being traversed 
-                atNode.setNext(null);
-                
-                //take the node and put it back into new array (foundation)
-                this.put(atNode);
+                node.setNext(this.foundation[indexNew]);
+                this.foundation[indexNew] = node;
+                nodeNumber++;
                 //move to next node 
-                atNode = nodeNext;
+                node = nextNode;
             }
             index++; 
         }                           
