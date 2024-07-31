@@ -17,7 +17,7 @@ public class Hash271 {
     } // default constructor
 
     /** Default for load factor */
-    private static final int double DEFAULT_THRESHOLD = 0.75; 
+    private static final double DEFAULT_THRESHOLD = 0.75; 
 
     /** Number of nodes */
     private int nodeNumber; //tracking number of nodes 
